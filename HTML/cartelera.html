@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartelera - Teatro Imperial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-masks"></i> Teatro Imperial
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cartelera.html">Cartelera</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="salas.html">Salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">
+                            <i class="bi bi-person-plus"></i> Registro
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="hero-section" style="padding: 80px 0;">
+        <div class="container">
+            <h1 class="fade-in">Cartelera Completa</h1>
+            <p class="fade-in">Todos los espectáculos disponibles en Teatro Imperial</p>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="container my-5">
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="text-primary-custom mb-3"><i class="bi bi-funnel"></i> Filtrar por:</h5>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <select class="form-select" id="filtroGenero">
+                        <option value="">Todos los géneros</option>
+                        <option value="drama">Drama</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="musical">Musical</option>
+                        <option value="infantil">Infantil</option>
+                        <option value="experimental">Experimental</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select class="form-select" id="filtroSala">
+                        <option value="">Todas las salas</option>
+                        <option value="principal">Sala Principal</option>
+                        <option value="experimental">Sala Experimental</option>
+                        <option value="camara">Sala de Cámara</option>
+                        <option value="infantil">Sala Infantil</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <select class="form-select" id="filtroDia">
+                        <option value="">Todos los días</option>
+                        <option value="lunes">Lunes</option>
+                        <option value="martes">Martes</option>
+                        <option value="miercoles">Miércoles</option>
+                        <option value="jueves">Jueves</option>
+                        <option value="viernes">Viernes</option>
+                        <option value="sabado">Sábado</option>
+                        <option value="domingo">Domingo</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Espectáculos en Cartelera -->
+    <section class="container my-5">
+        <h2 class="section-title text-center">En Cartelera</h2>
+        <div class="row g-4">
+            <!-- Espectáculo 1 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=600" class="card-img-top" alt="Hamlet">
+                    <div class="card-body">
+                        <h5 class="card-title">Hamlet</h5>
+                        <span class="badge-custom">Drama</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Daniel Veronese<br>
+                            <strong>Elenco:</strong> Ricardo Darín, Norma Aleandro, Joaquín Furriel
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Viernes y Sábados 20:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Principal
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $5,000
+                        </p>
+                        <p class="card-text">
+                            <small>La tragedia más famosa de Shakespeare cobra vida en una puesta moderna y conmovedora.</small>
+                        </p>
+                        <a href="compra.html?show=hamlet" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 2 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=600" class="card-img-top" alt="La Casa de Bernarda Alba">
+                    <div class="card-body">
+                        <h5 class="card-title">La Casa de Bernarda Alba</h5>
+                        <span class="badge-custom">Drama</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Carla Calabrese<br>
+                            <strong>Elenco:</strong> Mercedes Morán, Érica Rivas, Cecilia Roth
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Jueves a Domingo 19:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Experimental
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $4,500
+                        </p>
+                        <p class="card-text">
+                            <small>La obra maestra de Federico García Lorca sobre el poder, la represión y la libertad.</small>
+                        </p>
+                        <a href="compra.html?show=bernarda" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 3 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600" class="card-img-top" alt="El Avaro">
+                    <div class="card-body">
+                        <h5 class="card-title">El Avaro</h5>
+                        <span class="badge-custom">Comedia</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Marcos Carnevale<br>
+                            <strong>Elenco:</strong> Guillermo Francella, Florencia Peña, Diego Peretti
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Miércoles a Domingo 21:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Principal
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $6,000
+                        </p>
+                        <p class="card-text">
+                            <small>La hilarante comedia de Molière sobre la codicia y el amor al dinero.</small>
+                        </p>
+                        <a href="compra.html?show=avaro" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 4 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600" class="card-img-top" alt="Macbeth">
+                    <div class="card-body">
+                        <h5 class="card-title">Macbeth</h5>
+                        <span class="badge-custom">Drama</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Rubén Szuchmacher<br>
+                            <strong>Elenco:</strong> Oscar Martínez, Paola Krum, Luis Machín
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Martes a Sábados 20:30 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Principal
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $5,500
+                        </p>
+                        <p class="card-text">
+                            <small>La ambición y la traición en esta poderosa tragedia shakesperiana.</small>
+                        </p>
+                        <a href="compra.html?show=macbeth" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 5 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600" class="card-img-top" alt="Esperando a Godot">
+                    <div class="card-body">
+                        <h5 class="card-title">Esperando a Godot</h5>
+                        <span class="badge-custom">Teatro Absurdo</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Alejandro Tantanian<br>
+                            <strong>Elenco:</strong> Alfredo Casero, Pepe Soriano
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Viernes y Sábados 22:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Experimental
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $4,000
+                        </p>
+                        <p class="card-text">
+                            <small>La obra maestra de Samuel Beckett sobre la espera y el sentido de la existencia.</small>
+                        </p>
+                        <a href="compra.html?show=godot" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 6 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=600" class="card-img-top" alt="El Principito">
+                    <div class="card-body">
+                        <h5 class="card-title">El Principito</h5>
+                        <span class="badge-custom">Infantil</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Emilio García Wehbi<br>
+                            <strong>Elenco:</strong> Elenco rotativo
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Sábados y Domingos 15:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Infantil
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $3,500
+                        </p>
+                        <p class="card-text">
+                            <small>La mágica historia de Antoine de Saint-Exupéry cobra vida en el escenario.</small>
+                        </p>
+                        <a href="compra.html?show=principito" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 7 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600" class="card-img-top" alt="La Gaviota">
+                    <div class="card-body">
+                        <h5 class="card-title">La Gaviota</h5>
+                        <span class="badge-custom">Drama</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Agustín Alezzo<br>
+                            <strong>Elenco:</strong> Andrea Pietra, Rafael Ferro
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Jueves a Domingos 20:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala de Cámara
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $4,200
+                        </p>
+                        <p class="card-text">
+                            <small>La obra de Antón Chéjov sobre el amor, el arte y la frustración.</small>
+                        </p>
+                        <a href="compra.html?show=gaviota" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 8 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600" class="card-img-top" alt="Chicago">
+                    <div class="card-body">
+                        <h5 class="card-title">Chicago</h5>
+                        <span class="badge-custom">Musical</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Ricky Pashkus<br>
+                            <strong>Elenco:</strong> Lali Espósito, Mariano Martínez
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Miércoles a Domingos 21:30 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Principal
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $7,000
+                        </p>
+                        <p class="card-text">
+                            <small>El musical de Broadway llega con toda su energía, música y baile.</small>
+                        </p>
+                        <a href="compra.html?show=chicago" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Espectáculo 9 -->
+            <div class="col-md-4">
+                <div class="card show-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600" class="card-img-top" alt="Peter Pan">
+                    <div class="card-body">
+                        <h5 class="card-title">Peter Pan</h5>
+                        <span class="badge-custom">Infantil</span>
+                        <p class="card-text mt-3">
+                            <strong>Director:</strong> Manuel González Gil<br>
+                            <strong>Elenco:</strong> Elenco rotativo
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-calendar-event text-primary-custom"></i> Sábados y Domingos 17:00 hs
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-geo-alt text-primary-custom"></i> Sala Infantil
+                        </p>
+                        <p class="card-text">
+                            <i class="bi bi-currency-dollar text-primary-custom"></i> Desde $3,800
+                        </p>
+                        <p class="card-text">
+                            <small>Vuela hacia el País de Nunca Jamás en esta aventura mágica para toda la familia.</small>
+                        </p>
+                        <a href="compra.html?show=peterpan" class="btn btn-primary w-100 mt-3">
+                            <i class="bi bi-ticket-perforated"></i> Comprar Entradas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Próximos Estrenos -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Próximos Estrenos</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card show-card">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600" class="card-img-top" alt="Romeo y Julieta">
+                        <div class="card-body">
+                            <h5 class="card-title">Romeo y Julieta</h5>
+                            <span class="badge-custom">Romance</span>
+                            <p class="card-text mt-3">
+                                <strong>Estreno:</strong> 15 de Noviembre<br>
+                                <strong>Sala:</strong> Principal
+                            </p>
+                            <p class="card-text">
+                                <small>Una versión moderna del clásico de Shakespeare.</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card show-card">
+                        <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=600" class="card-img-top" alt="La Tempestad">
+                        <div class="card-body">
+                            <h5 class="card-title">La Tempestad</h5>
+                            <span class="badge-custom">Drama</span>
+                            <p class="card-text mt-3">
+                                <strong>Estreno:</strong> 22 de Noviembre<br>
+                                <strong>Sala:</strong> Experimental
+                            </p>
+                            <p class="card-text">
+                                <small>Magia, poder y redención en esta obra de Shakespeare.</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card show-card">
+                        <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600" class="card-img-top" alt="El Rey León">
+                        <div class="card-body">
+                            <h5 class="card-title">El Rey León</h5>
+                            <span class="badge-custom">Musical Infantil</span>
+                            <p class="card-text mt-3">
+                                <strong>Estreno:</strong> 1 de Diciembre<br>
+                                <strong>Sala:</strong> Principal
+                            </p>
+                            <p class="card-text">
+                                <small>El musical más exitoso de todos los tiempos.</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-section mb-4">
+                    <h5><i class="bi bi-masks"></i> Teatro Imperial</h5>
+                    <p>El mejor teatro de la ciudad. Más de 50 años de historia y tradición cultural.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-section mb-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="cartelera.html">Cartelera</a></li>
+                        <li><a href="salas.html">Nuestras Salas</a></li>
+                        <li><a href="registro.html">Registro</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-section mb-4">
+                    <h5>Contacto</h5>
+                    <p><i class="bi bi-geo-alt"></i> Av. Almirante Brown 912, Jujuy</p>
+                    <p><i class="bi bi-telephone"></i> +54 388 4567-8900</p>
+                    <p><i class="bi bi-envelope"></i> info@teatroimperial.com</p>
+                    <p><i class="bi bi-clock"></i> Lun-Dom: 10:00 - 23:00 hs</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center py-3">
+                <p>&copy; 2024 Teatro Imperial. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

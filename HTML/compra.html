@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Entradas - Teatro Imperial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-masks"></i> Teatro Imperial
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cartelera.html">Cartelera</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="salas.html">Salas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">
+                            <i class="bi bi-person-plus"></i> Registro
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="hero-section" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="fade-in">Compra de Entradas</h1>
+            <p class="fade-in">Completa los datos para adquirir tus entradas</p>
+        </div>
+    </section>
+
+    <!-- Formulario de Compra -->
+    <section class="container my-5" id="formularioCompra">
+        <div class="row">
+            <!-- Formulario -->
+            <div class="col-lg-8">
+                <div class="form-container fade-in">
+                    <h3 class="text-primary-custom mb-4">
+                        <i class="bi bi-ticket-perforated"></i> Datos de la Compra
+                    </h3>
+                    
+                    <form id="compraForm" onsubmit="return procesarCompra(event)">
+                        <!-- Selección de Espectáculo -->
+                        <h5 class="text-primary-custom mt-4 mb-3">
+                            <i class="bi bi-film"></i> Espectáculo
+                        </h5>
+                        
+                        <div class="mb-3">
+                            <label for="espectaculo" class="form-label">Seleccione el espectáculo *</label>
+                            <select class="form-select" id="espectaculo" name="espectaculo" required onchange="actualizarPrecio()">
+                                <option value="">Seleccione...</option>
+                                <option value="hamlet" data-precio="5000">Hamlet - Drama</option>
+                                <option value="bernarda" data-precio="4500">La Casa de Bernarda Alba - Drama</option>
+                                <option value="avaro" data-precio="6000">El Avaro - Comedia</option>
+                                <option value="macbeth" data-precio="5500">Macbeth - Drama</option>
+                                <option value="godot" data-precio="4000">Esperando a Godot - Teatro Absurdo</option>
+                                <option value="principito" data-precio="3500">El Principito - Infantil</option>
+                                <option value="gaviota" data-precio="4200">La Gaviota - Drama</option>
+                                <option value="chicago" data-precio="7000">Chicago - Musical</option>
+                                <option value="peterpan" data-precio="3800">Peter Pan - Infantil</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fecha" class="form-label">Fecha de la función *</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="horario" class="form-label">Horario *</label>
+                                <select class="form-select" id="horario" name="horario" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="15:00">15:00 hs</option>
+                                    <option value="17:00">17:00 hs</option>
+                                    <option value="19:00">19:00 hs</option>
+                                    <option value="20:00">20:00 hs</option>
+                                    <option value="20:30">20:30 hs</option>
+                                    <option value="21:00">21:00 hs</option>
+                                    <option value="21:30">21:30 hs</option>
+                                    <option value="22:00">22:00 hs</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Cantidad de Entradas -->
+                        <h5 class="text-primary-custom mt-4 mb-3">
+                            <i class="bi bi-people"></i> Cantidad de Entradas
+                        </h5>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="cantidadGeneral" class="form-label">Entrada General</label>
+                                <input type="number" class="form-control" id="cantidadGeneral" name="cantidadGeneral" min="0" max="10" value="0" onchange="calcularTotal()">
+                                <small class="text-muted">Precio base</small>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="cantidadEstudiante" class="form-label">Estudiantes</label>
+                                <input type="number" class="form-control" id="cantidadEstudiante" name="cantidadEstudiante" min="0" max="10" value="0" onchange="calcularTotal()">
+                                <small class="text-muted">30% descuento</small>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="cantidadJubilado" class="form-label">Jubilados</label>
+                                <input type="number" class="form-control" id="cantidadJubilado" name="cantidadJubilado" min="0" max="10" value="0" onchange="calcularTotal()">
+                                <small class="text-muted">40% descuento</small>
+                            </div>
+                        </div>
+
+                        <!-- Ubicación -->
+                        <h5 class="text-primary-custom mt-4 mb-3">
+                            <i class="bi bi-geo"></i> Ubicación
+                        </h5>
+
+                        <div class="mb-3">
+                            <label for="ubicacion" class="form-label">Seleccione la ubicación *</label>
+                            <select class="form-select" id="ubicacion" name="ubicacion" required onchange="calcularTotal()">
+                                <option value="">Seleccione...</option>
+                                <option value="platea" data-multiplicador="1">Platea (Precio base)</option>
+                                <option value="palco1" data-multiplicador="1.3">Palco 1er Nivel (+30%)</option>
+                                <option value="palco2" data-multiplicador="1.2">Palco 2do Nivel (+20%)</option>
+                                <option value="palco3" data-multiplicador="1.1">Palco 3er Nivel (+10%)</option>
+                                <option value="pullman" data-multiplicador="0.8">Pullman (-20%)</option>
+                            </select>
+                        </div>
+
+                        <!-- Datos del Comprador -->
+                        <h5 class="text-primary-custom mt-4 mb-3">
+                            <i class="bi bi-person"></i> Datos del Comprador
+                        </h5>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombreComprador" class="form-label">Nombre completo *</label>
+                                <input type="text" class="form-control" id="nombreComprador" name="nombreComprador" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="emailComprador" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="emailComprador" name="emailComprador" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="telefonoComprador" class="form-label">Teléfono *</label>
+                                <input type="tel" class="form-control" id="telefonoComprador" name="telefonoComprador" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="dniComprador" class="form-label">DNI *</label>
+                                <input type="text" class="form-control" id="dniComprador" name="dniComprador" pattern="[0-9]{7,8}" required>
+                            </div>
+                        </div>
+
+                        <!-- Forma de Pago -->
+                        <h5 class="text-primary-custom mt-4 mb-3">
+                            <i class="bi bi-credit-card"></i> Forma de Pago
+                        </h5>
+
+                        <div class="mb-3">
+                            <label for="metodoPago" class="form-label">Método de pago *</label>
+                            <select class="form-select" id="metodoPago" name="metodoPago" required onchange="mostrarDatosPago()">
+                                <option value="">Seleccione...</option>
+                                <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                <option value="transferencia">Transferencia Bancaria</option>
+                                <option value="mercadopago">Mercado Pago</option>
+                                <option value="efectivo">Efectivo en boletería</option>
+                            </select>
+                        </div>
+
+                        <!-- Datos de Tarjeta (se muestra condicionalmente) -->
+                        <div id="datosTarjeta" style="display: none;">
+                            <div class="mb-3">
+                                <label for="numeroTarjeta" class="form-label">Número de tarjeta</label>
+                                <input type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="vencimiento" class="form-label">Vencimiento</label>
+                                    <input type="text" class="form-control" id="vencimiento" name="vencimiento" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="cvv" class="form-label">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cuotas" class="form-label">Cuotas</label>
+                                <select class="form-select" id="cuotas" name="cuotas">
+                                    <option value="1">1 pago (sin interés)</option>
+                                    <option value="3">3 cuotas (sin interés)</option>
+                                    <option value="6">6 cuotas (10% interés)</option>
+                                    <option value="12">12 cuotas (20% interés)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="terminosCompra" name="terminosCompra" required>
+                                <label class="form-check-label" for="terminosCompra">
+                                    Acepto los <a href="#" class="text-primary-custom">términos y condiciones de compra</a> *
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-cart-check"></i> Confirmar Compra
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Resumen de Compra -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-body">
+                        <h5 class="text-primary-custom mb-4">
+                            <i class="bi bi-receipt"></i> Resumen de Compra
+                        </h5>
+                        
+                        <div id="resumenEspectaculo" class="mb-3" style="display: none;">
+                            <h6 class="text-primary-custom">Espectáculo:</h6>
+                            <p id="nombreEspectaculo" class="mb-1"></p>
+                            <p id="fechaHorario" class="text-muted small"></p>
+                        </div>
+
+                        <hr>
+
+                        <div id="resumenEntradas" class="mb-3">
+                            <h6 class="text-primary-custom">Entradas:</h6>
+                            <div id="detalleEntradas"></div>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Cargo por servicio:</span>
+                            <span id="cargoServicio">$0</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <strong>Total:</strong>
+                            <strong id="total" class="text-primary-custom" style="font-size: 1.5rem;">$0</strong>
+                        </div>
+
+                        <div class="alert alert-info mt-4" role="alert">
+                            <i class="bi bi-info-circle"></i> Las entradas serán enviadas a tu email una vez confirmado el pago.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmación (oculta inicialmente) -->
+    <section class="container my-5" id="confirmacionCompra" style="display: none;">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="confirmation-box fade-in">
+                    <div class="confirmation-icon">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <h2>¡Compra Confirmada!</h2>
+                    <p class="lead">Tu compra ha sido procesada exitosamente</p>
+                    
+                    <div class="card bg-white text-dark mt-4 mb-4">
+                        <div class="card-body">
+                            <h5 class="text-primary-custom mb-3">Detalles de tu compra:</h5>
+                            <p><strong>Número de orden:</strong> <span id="numeroOrden"></span></p>
+                            <p><strong>Espectáculo:</strong> <span id="confEspectaculo"></span></p>
+                            <p><strong>Fecha y hora:</strong> <span id="confFechaHora"></span></p>
+                            <p><strong>Cantidad de entradas:</strong> <span id="confCantidad"></span></p>
+                            <p><strong>Ubicación:</strong> <span id="confUbicacion"></span></p>
+                            <p><strong>Total pagado:</strong> <span id="confTotal" class="text-primary-custom"></span></p>
+                            <p><strong>Método de pago:</strong> <span id="confMetodoPago"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light" role="alert">
+                        <i class="bi bi-envelope-check"></i> 
+                        Hemos enviado tus entradas digitales al email: <strong id="confEmail"></strong>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="index.html" class="btn btn-outline-light btn-lg me-3">
+                            <i class="bi bi-house"></i> Volver al Inicio
+                        </a>
+                        <a href="cartelera.html" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-ticket"></i> Ver más espectáculos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-section mb-4">
+                    <h5><i class="bi bi-masks"></i> Teatro Imperial</h5>
+                    <p>El mejor teatro de la ciudad. Más de 50 años de historia y tradición cultural.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-section mb-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="cartelera.html">Cartelera</a></li>
+                        <li><a href="salas.html">Nuestras Salas</a></li>
+                        <li><a href="registro.html">Registro</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-section mb-4">
+                    <h5>Contacto</h5>
+                    <p><i class="bi bi-geo-alt"></i> Av. Almirante Brown 912, Jujuy</p>
+                    <p><i class="bi bi-telephone"></i> +54 388 4567-8900</p>
+                    <p><i class="bi bi-envelope"></i> info@teatroimperial.com</p>
+                    <p><i class="bi bi-clock"></i> Lun-Dom: 10:00 - 23:00 hs</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center py-3">
+                <p>&copy; 2024 Teatro Imperial. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let precioBase = 0;
+
+        function actualizarPrecio() {
+            const select = document.getElementById('espectaculo');
+            const option = select.options[select.selectedIndex];
+            precioBase = parseInt(option.getAttribute('data-precio')) || 0;
+            
+            if (precioBase > 0) {
+                document.getElementById('resumenEspectaculo').style.display = 'block';
+                document.getElementById('nombreEspectaculo').textContent = option.text;
+            }
+            
+            calcularTotal();
+        }
+
+        function calcularTotal() {
+            if (precioBase === 0) return;
+
+            const cantGeneral = parseInt(document.getElementById('cantidadGeneral').value) || 0;
+            const cantEstudiante = parseInt(document.getElementById('cantidadEstudiante').value) || 0;
+            const cantJubilado = parseInt(document.getElementById('cantidadJubilado').value) || 0;
+            
+            const ubicacion = document.getElementById('ubicacion');
+            const multiplicador = parseFloat(ubicacion.options[ubicacion.selectedIndex]?.getAttribute('data-multiplicador')) || 1;
+
+            const precioGeneral = precioBase * multiplicador;
+            const precioEstudiante = precioBase * multiplicador * 0.7;
+            const precioJubilado = precioBase * multiplicador * 0.6;
+
+            const subtotal = (cantGeneral * precioGeneral) + (cantEstudiante * precioEstudiante) + (cantJubilado * precioJubilado);
+            const cargoServicio = subtotal * 0.1;
+            const total = subtotal + cargoServicio;
+
+            // Actualizar resumen
+            let detalleHTML = '';
+            if (cantGeneral > 0) detalleHTML += `<p class="mb-1">${cantGeneral} General: $${(cantGeneral * precioGeneral).toLocaleString()}</p>`;
+            if (cantEstudiante > 0) detalleHTML += `<p class="mb-1">${cantEstudiante} Estudiante: $${(cantEstudiante * precioEstudiante).toLocaleString()}</p>`;
+            if (cantJubilado > 0) detalleHTML += `<p class="mb-1">${cantJubilado} Jubilado: $${(cantJubilado * precioJubilado).toLocaleString()}</p>`;
+
+            document.getElementById('detalleEntradas').innerHTML = detalleHTML || '<p class="text-muted">No hay entradas seleccionadas</p>';
+            document.getElementById('subtotal').textContent = '$' + subtotal.toLocaleString();
+            document.getElementById('cargoServicio').textContent = '$' + cargoServicio.toLocaleString();
+            document.getElementById('total').textContent = '$' + total.toLocaleString();
+        }
+
+        function mostrarDatosPago() {
+            const metodo = document.getElementById('metodoPago').value;
+            const datosTarjeta = document.getElementById('datosTarjeta');
+            
+            if (metodo === 'tarjeta') {
+                datosTarjeta.style.display = 'block';
+            } else {
+                datosTarjeta.style.display = 'none';
+            }
+        }
+
+        function procesarCompra(event) {
+            event.preventDefault();
+
+            // Validar que haya al menos una entrada
+            const cantTotal = (parseInt(document.getElementById('cantidadGeneral').value) || 0) +
+                            (parseInt(document.getElementById('cantidadEstudiante').value) || 0) +
+                            (parseInt(document.getElementById('cantidadJubilado').value) || 0);
+            
+            if (cantTotal === 0) {
+                alert('Debe seleccionar al menos una entrada');
+                return false;
+            }
+
+            // Recopilar datos
+            const espectaculo = document.getElementById('espectaculo').options[document.getElementById('espectaculo').selectedIndex].text;
+            const fecha = document.getElementById('fecha').value;
+            const horario = document.getElementById('horario').value;
+            const ubicacion = document.getElementById('ubicacion').options[document.getElementById('ubicacion').selectedIndex].text;
+            const email = document.getElementById('emailComprador').value;
+            const metodoPago = document.getElementById('metodoPago').options[document.getElementById('metodoPago').selectedIndex].text;
+            const total = document.getElementById('total').textContent;
+
+            // Generar número de orden
+            const numeroOrden = 'TI-' + Date.now();
+
+            // Llenar confirmación
+            document.getElementById('numeroOrden').textContent = numeroOrden;
+            document.getElementById('confEspectaculo').textContent = espectaculo;
+            document.getElementById('confFechaHora').textContent = fecha + ' - ' + horario;
+            document.getElementById('confCantidad').textContent = cantTotal;
+            document.getElementById('confUbicacion').textContent = ubicacion;
+            document.getElementById('confTotal').textContent = total;
+            document.getElementById('confMetodoPago').textContent = metodoPago;
+            document.getElementById('confEmail').textContent = email;
+
+            // Ocultar formulario y mostrar confirmación
+            document.getElementById('formularioCompra').style.display = 'none';
+            document.getElementById('confirmacionCompra').style.display = 'block';
+            
+            // Scroll al inicio
+            window.scrollTo(0, 0);
+
+            return false;
+        }
+
+        // Establecer fecha mínima como hoy
+        document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
